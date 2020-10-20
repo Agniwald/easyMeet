@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 import threading
 import os
 
-from settings import MAIL, PASSWORD
+from settings import MAIL, PASSWORD, GECKODRIVER_PATH, FIREFOX_BIN
 from models import *
 
 import logging
@@ -30,10 +30,11 @@ def init():
 	# Block micro and audio
 	opt.set_preference("permissions.default.microphone", 2)
 	opt.set_preference("permissions.default.camera", 2)
+	opt.binary_location = FIREFOX_BIN # Heroku
 
 	# Init browser webdriver
 	# try:
-	driver = webdriver.Firefox(options=opt, executable_path='/app/vendor/geckodriver/geckodriver')
+	driver = webdriver.Firefox(options=opt, executable_path=GECKODRIVER_PATH) #Local - '/usr/local/bin/geckodriver'
 	# 	logging.info("Webdriver initializated")
 	# except:
 	# 	logging.critical("Webdriver initialization failed", exc_info=True)
