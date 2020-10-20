@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}  
+<h4>Предметы</h4>
+
+<form method="POST" action="/add_subject"  enctype="multipart/form-data">
+    <input class="form-control" type="text" name="name" placeholder="Название предмета"/ required>
+    <input class="form-control" type="text" name="url" placeholder="Ссылка на Google Meet"/ required>
+    <br>
+    <button class="btn" type="submit"/>Добавить</button>
+</form>
+<br>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Название предмета</th>
+            <th>Ссылка на Google Meet</th>
+            <th>Удалить</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for subject in subjects %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ subject.name }}</td>
+        <td>{{ subject.url }}</td>
+        <td>
+            <form method="POST" action="/delete_subject">
+                <button class="btn" type="submit" name="id" value={{ subject.id }}>Удалить</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<h4>Активные таймеры</h4>
+
+<form method="POST" action="/add_timer"  enctype="multipart/form-data">
+    Предмет
+    <select id="subject" name="subject" required>
+        {% for subject in subjects %}
+            {% if loop.index == 1 %}
+                <option value="{{ subject }}" selected>{{ subject }}</option>
+            {% else %}
+                <option value="{{ subject }}">{{ subject }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <br>
+    <p>Зайти в:</p>
+    <input class="form-control" type="date" name="start_date" placeholder=""/ required>
+    <input class="form-control" type="time" name="start_time" placeholder=""/ required>
+    <p>Уйти в:</p>
+    <input class="form-control" type="date" name="end_date" placeholder=""/ required>
+    <input class="form-control" type="time" name="end_time" placeholder=""/ required>
+    <br>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning" role="alert">
+                    <span>{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <button class="btn" type="submit"/>Добавить</button>
+</form>
+<br>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Предмет</th>
+            <th>Зайти</th>
+            <th>Уйти</th>
+            <th>Статус</th>
+            <th>Удалить</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for timer in timers %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ timer.name }}</td>
+        <td>{{ timer.start }}</td>
+        <td>{{ timer.end }}</td>
+        <td>{{ timer.status }}</td>
+        <td>
+            <form method="POST" action="/delete_timer">
+                <button class="btn" type="submit" name="id" value={{ timer.id }}>Удалить</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
