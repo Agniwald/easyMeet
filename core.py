@@ -34,13 +34,13 @@ def init():
 	opt.set_preference("permissions.default.camera", 2)
 
 	# Heroku
-	binary = FirefoxBinary(FIREFOX_BIN) 
+	opt.binary = FIREFOX_BIN
 	caps = DesiredCapabilities.FIREFOX.copy()
-	caps['marionette'] = False
+	caps['marionette'] = True
 
 	# Init browser webdriver
 	# try:
-	driver = webdriver.Firefox(options=opt, executable_path=GECKODRIVER_PATH, capabilities=caps, firefox_binary=binary) #Local - '/usr/local/bin/geckodriver'
+	driver = webdriver.Firefox(options=opt, executable_path=GECKODRIVER_PATH, capabilities=caps) #Local - '/usr/local/bin/geckodriver'
 	# 	logging.info("Webdriver initializated")
 	# except:
 	# 	logging.critical("Webdriver initialization failed", exc_info=True)
