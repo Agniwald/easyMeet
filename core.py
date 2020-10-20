@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -31,11 +30,11 @@ def init():
 	# Block micro and audio
 	opt.set_preference("permissions.default.microphone", 2)
 	opt.set_preference("permissions.default.camera", 2)
-	binary = FirefoxBinary(FIREFOX_BIN)  # Heroku
+	# binary = FirefoxBinary(FIREFOX_BIN)  # Heroku
 
 	# Init browser webdriver
 	# try:
-	driver = webdriver.Firefox(options=opt, executable_path=GECKODRIVER_PATH, firefox_binary=binary) #Local - '/usr/local/bin/geckodriver'
+	driver = webdriver.Firefox(options=opt) #Local - '/usr/local/bin/geckodriver'
 	# 	logging.info("Webdriver initializated")
 	# except:
 	# 	logging.critical("Webdriver initialization failed", exc_info=True)
