@@ -32,11 +32,11 @@ def init():
 	opt.set_preference("permissions.default.camera", 2)
 
 	# Init browser webdriver
-	try:
-		driver = webdriver.Firefox(options=opt, executable_path='/usr/local/bin/geckodriver')
-		logging.info("Webdriver initializated")
-	except:
-		logging.critical("Webdriver initialization failed", exc_info=True)
+	# try:
+	driver = webdriver.Firefox(options=opt)
+	# 	logging.info("Webdriver initializated")
+	# except:
+	# 	logging.critical("Webdriver initialization failed", exc_info=True)
 
 
 def google_login():
