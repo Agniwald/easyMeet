@@ -4,13 +4,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 import time
 from datetime import datetime, timedelta
 import threading
 import os
 
-from settings import MAIL, PASSWORD, GECKODRIVER_PATH
+from settings import MAIL, PASSWORD, GECKODRIVER_PATH, FIREFOX_BIN
 from models import *
 
 import logging
@@ -31,13 +32,15 @@ def init():
 	# Block micro and audio
 	opt.set_preference("permissions.default.microphone", 2)
 	opt.set_preference("permissions.default.camera", 2)
-	# binary = FirefoxBinary(FIREFOX_BIN) 
+
 	# Heroku
+	binary = FirefoxBinary(FIREFOX_BIN) 
 	caps = DesiredCapabilities.FIREFOX.copy()
 	caps['marionette'] = False
+
 	# Init browser webdriver
 	# try:
-	driver = webdriver.Firefox(options=opt, executable_path=GECKODRIVER_PATH, capabilities=caps) #Local - '/usr/local/bin/geckodriver'
+	driver = webdriver.Firefox(options=opt, executable_path=GECKODRIVER_PATH, capabilities=caps, firefox_binary=binary) #Local - '/usr/local/bin/geckodriver'
 	# 	logging.info("Webdriver initializated")
 	# except:
 	# 	logging.critical("Webdriver initialization failed", exc_info=True)
