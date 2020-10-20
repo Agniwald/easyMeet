@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 import threading
 import os
 
-from settings import MAIL, PASSWORD
+from settings import MAIL, PASSWORD, GECKODRIVER_PATH
 from models import *
 
 import logging
@@ -34,7 +34,7 @@ def init():
 
 	# Init browser webdriver
 	# try:
-	driver = webdriver.Firefox(options=opt, executable_path='/usr/local/bin/geckodriver') #Local - '/usr/local/bin/geckodriver'
+	driver = webdriver.Firefox(options=opt, executable_path=GECKODRIVER_PATH) #Local - '/usr/local/bin/geckodriver'
 	# 	logging.info("Webdriver initializated")
 	# except:
 	# 	logging.critical("Webdriver initialization failed", exc_info=True)
