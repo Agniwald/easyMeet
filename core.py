@@ -33,7 +33,7 @@ def init():
 
 	# Init browser webdriver
 	# try:
-	driver = webdriver.Firefox(options=opt)
+	driver = webdriver.Firefox(options=opt, executable_path='/usr/local/bin/geckodriver')
 	# 	logging.info("Webdriver initializated")
 	# except:
 	# 	logging.critical("Webdriver initialization failed", exc_info=True)
