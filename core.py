@@ -3,6 +3,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 import time
 from datetime import datetime, timedelta
@@ -30,11 +31,13 @@ def init():
 	# Block micro and audio
 	opt.set_preference("permissions.default.microphone", 2)
 	opt.set_preference("permissions.default.camera", 2)
-	# binary = FirefoxBinary(FIREFOX_BIN)  # Heroku
-
+	# binary = FirefoxBinary(FIREFOX_BIN) 
+	# Heroku
+	caps = DesiredCapabilities.FIREFOX.copy()
+	caps['marionette'] = False
 	# Init browser webdriver
 	# try:
-	driver = webdriver.Firefox(options=opt, executable_path=GECKODRIVER_PATH) #Local - '/usr/local/bin/geckodriver'
+	driver = webdriver.Firefox(options=opt, executable_path=GECKODRIVER_PATH, capabilities=caps) #Local - '/usr/local/bin/geckodriver'
 	# 	logging.info("Webdriver initializated")
 	# except:
 	# 	logging.critical("Webdriver initialization failed", exc_info=True)
