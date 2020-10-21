@@ -30,7 +30,7 @@ def init():
 	chrome_options.add_argument("--headless")
 	chrome_options.add_argument("--disable-dev-shm-usage")
 	chrome_options.add_argument("--no-sandbox")
-	chrome_options.add_argument('user-agent=Mozilla/5.0 (Windows NT 4.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36')
+	chrome_options.add_argument('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36')
 	# Block micro, audio, geolocation and notifications
 	chrome_options.add_experimental_option("prefs", { \
 		"profile.default_content_setting_values.media_stream_mic": 2, 
@@ -42,6 +42,7 @@ def init():
 	# Init browser webdriver
 	try:
 		driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+		print(driver.execute_script("return navigator.userAgent"))
 		logging.info("Webdriver initializated")
 	except:
 		logging.critical("Webdriver initialization failed", exc_info=True)
@@ -106,7 +107,7 @@ def join_meet(meet):
 		# Get Meet Url
 		driver.get(needed_subject.url)
 		# Wait join button to appear 
-		
+
 		driver.save_screenshot("static/1.png")
 		join_btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.uArJ5e:nth-child(1)')))
 		driver.save_screenshot("static/2.png")
