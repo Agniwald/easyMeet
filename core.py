@@ -105,12 +105,16 @@ def join_meet(meet):
 		# Get Meet Url
 		driver.get(needed_subject.url)
 		# Wait join button to appear
+		driver.save_screenshot("static/1.png")
 		join_btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.uArJ5e:nth-child(1)')))
+		driver.save_screenshot("static/2.png")
 		time.sleep(7)
+		driver.save_screenshot("static/3.png")
 		join_btn.click()
+		driver.save_screenshot("static/4.png")
 		logging.info(f'Successfully joined {meet}')
-		time.sleep(7)
-		driver.save_screenshot("static/screenshot.png")
+		time.sleep(5)
+		driver.save_screenshot("static/5.png")
 	except:
 		logging.warning('Joining meet failed. Trying again.')
 		join_meet(meet)

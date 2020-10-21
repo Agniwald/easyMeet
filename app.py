@@ -88,7 +88,8 @@ def log():
 
 @app.route('/test')
 def test():
-    return render_template("test.html", image = 'static/screenshot.png')
+	images = ['static/1.png', 'static/2.png', 'static/3.png', 'static/4.png', 'static/5.png']
+	return render_template("test.html", images=images)
 
 
 if __name__ == '__main__':
