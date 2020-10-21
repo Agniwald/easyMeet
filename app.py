@@ -86,5 +86,10 @@ def log():
 	return render_template('log.html', logs=logs)
 
 
+@app.route('/test')
+def test():
+    return render_template("test.html", image = 'static/screenshot.png')
+
+
 if __name__ == '__main__':
 	app.run(port=8000, debug=False, use_reloader=False, threaded=True)
