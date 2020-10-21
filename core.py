@@ -106,6 +106,7 @@ def join_meet(meet):
 		driver.get(needed_subject.url)
 		# Wait join button to appear
 		join_btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.uArJ5e:nth-child(1)')))
+		time.sleep(5)
 		join_btn.click()
 		logging.info(f'Successfully joined {meet}')
 	except:
