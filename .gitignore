@@ -1,5 +1,4 @@
 __pycache__
 venv/
-geckodriver.log
 core.log
 .env

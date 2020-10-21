@@ -12,7 +12,7 @@ from settings import MAIL, PASSWORD, GOOGLE_CHROME_BIN, CHROMEDRIVER_PATH
 from models import *
 
 import logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s - %(message)s', datefmt='%d-%m-%Y %H:%M:%S', filename='core.log', filemode='w')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s - %(message)s', datefmt='%d-%m-%Y %H:%M:%S')
 
 driver = None
 
