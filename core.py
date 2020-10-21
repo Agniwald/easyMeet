@@ -12,7 +12,7 @@ from settings import MAIL, PASSWORD, GOOGLE_CHROME_BIN, CHROMEDRIVER_PATH
 from models import *
 
 import logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s - %(message)s', datefmt='%d-%m-%Y %H:%M:%S')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s - %(message)s', datefmt='%d-%m-%Y %H:%M:%S', filename='core.log', filemode='w')
 
 driver = None
 
@@ -67,7 +67,7 @@ def google_login():
 	try:
 		# Wait form to be loaded
 		WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.CLASS_NAME, 'ANuIbb.IdAqtf')))
-		# Find password field
+		# Find password find_element_by_id
 		driver.find_element_by_name('Passwd').send_keys(PASSWORD)
 		driver.find_element_by_id('submit').click()
 		logging.info('Sent password key')
