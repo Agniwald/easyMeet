@@ -27,7 +27,7 @@ def init():
 	chrome_options = webdriver.ChromeOptions()
 	chrome_options.binary_location = GOOGLE_CHROME_BIN
 	# Start browser in virtual display
-	# chrome_options.add_argument("--headless")
+	chrome_options.add_argument("--headless")
 	chrome_options.add_argument("--disable-dev-shm-usage")
 	chrome_options.add_argument("--no-sandbox")
 	# Block micro, audio, geolocation and notifications
@@ -57,8 +57,8 @@ def google_login():
 
 	try:
 		# Find login field
-		driver.find_element_by_id('identifierId').send_keys(MAIL)
-		driver.find_element_by_id('identifierNext').click()
+		driver.find_element_by_name('Email').send_keys(MAIL)
+		driver.find_element_by_id('next').click()
 		logging.info('Sent mail key')
 	except:
 		logging.warning('Could not send mail key. Starting authorization again')
@@ -68,8 +68,8 @@ def google_login():
 		# Wait form to be loaded
 		WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.CLASS_NAME, 'ANuIbb.IdAqtf')))
 		# Find password field
-		driver.find_element_by_name('password').send_keys(PASSWORD)
-		driver.find_element_by_id('passwordNext').click()
+		driver.find_element_by_name('Passwd').send_keys(PASSWORD)
+		driver.find_element_by_id('submit').click()
 		logging.info('Sent password key')
 	except:
 		logging.warning('Could not send password key. Starting authorization again')
