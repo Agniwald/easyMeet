@@ -27,7 +27,7 @@ def init():
 	chrome_options = webdriver.ChromeOptions()
 	chrome_options.binary_location = GOOGLE_CHROME_BIN
 	# Start browser in virtual display
-	chrome_options.add_argument("--headless")
+	# chrome_options.add_argument("--headless")
 	chrome_options.add_argument("--disable-dev-shm-usage")
 	chrome_options.add_argument("--no-sandbox")
 	# Block micro, audio, geolocation and notifications
