@@ -105,7 +105,8 @@ def join_meet(meet):
 	try:
 		# Get Meet Url
 		driver.get(needed_subject.url)
-		# Wait join button to appear
+		# Wait join button to appear 
+		
 		driver.save_screenshot("static/1.png")
 		join_btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.uArJ5e:nth-child(1)')))
 		driver.save_screenshot("static/2.png")
