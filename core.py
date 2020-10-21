@@ -25,12 +25,12 @@ def init():
 	global driver
 
 	chrome_options = webdriver.ChromeOptions()
-	# Start browser in virtual display
 	chrome_options.binary_location = GOOGLE_CHROME_BIN
-	# chrome_options.add_argument("--headless")
+	# Start browser in virtual display
+	chrome_options.add_argument("--headless")
 	chrome_options.add_argument("--disable-dev-shm-usage")
 	chrome_options.add_argument("--no-sandbox")
-	# Block micro and audio
+	# Block micro, audio, geolocation and notifications
 	chrome_options.add_experimental_option("prefs", { \
 		"profile.default_content_setting_values.media_stream_mic": 2, 
 		"profile.default_content_setting_values.media_stream_camera": 2,
@@ -39,11 +39,11 @@ def init():
   	})
 
 	# Init browser webdriver
-	# try:
-	driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
-	# 	logging.info("Webdriver initializated")
-	# except:
-	# 	logging.critical("Webdriver initialization failed", exc_info=True)
+	try:
+		driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+		logging.info("Webdriver initializated")
+	except:
+		logging.critical("Webdriver initialization failed", exc_info=True)
 
 
 def google_login():
