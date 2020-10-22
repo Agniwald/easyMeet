@@ -65,7 +65,7 @@ def google_login():
 		logging.info('Sent mail key')
 	except:
 		logging.warning('Could not send mail key. Starting authorization again')
-		google_login()
+		# google_login()
 
 	try:
 		# Wait form to be loaded
@@ -79,10 +79,15 @@ def google_login():
 		logging.info('Sent password key')
 	except:
 		logging.warning('Could not send password key. Starting authorization again')
-		google_login()
+		# google_login()
 
 	logging.info("Google authorization success!")
 	driver.save_screenshot("static/img/4.png")
+	print(driver.page_source)
+	logging.info(driver.page_source)
+
+	# Start active timers after success authorization
+	# start_active()
 
 
 def start_active():
@@ -175,9 +180,3 @@ def cancel_meet(thread_id):
 			logging.info(f'Canceling thread {thread_id} end')
 		else:
 			logging.warning(f'Did not find thread with id {thread_id}')
-
-
-# start core
-init()
-google_login()
-start_active()

@@ -14,6 +14,9 @@ db = SQLAlchemy(app)
 from models import *
 import core
 
+# Start core
+core.init()
+
 
 @app.route("/")
 def index():
@@ -81,7 +84,7 @@ def delete_timer():
 	return redirect(url_for("index"))
 
 
-@app.route("/log")
+@app.route("/logs")
 def log():
 	logs = open("core.log").read()
 	return render_template('log.html', logs=logs)
@@ -91,6 +94,15 @@ def log():
 def test():
 	images =[os.path.join(r, n)  for r, _, f in os.walk("static/img/") for n in f]
 	return render_template("test.html", images=images)
+
+
+@app.route('/googlelogin', methods=['GET', 'POST'])
+def googlelogin():
+	if request.method == 'POST':
+		if 'login' in request.form:
+			core.google_login()
+
+	return render_template("login.html")
 
 
 if __name__ == '__main__':
