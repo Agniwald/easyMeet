@@ -4,4 +4,10 @@
 <form method="POST" action="/googlelogin">
     <button class="btn" type="submit" name="login">Start</button>
 </form>
+<br>
+<h2>Only if captcha appeared</h2>
+<form method="POST" action="/googlelogin">
+	<input class="form-control" type="text" name="captcha" required>
+    <button class="btn" type="submit">Send captcha</button>
+</form>
 {% endblock %}

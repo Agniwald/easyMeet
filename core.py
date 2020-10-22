@@ -46,6 +46,35 @@ def init():
 		logging.critical("Webdriver initialization failed", exc_info=True)
 
 
+def send_mail():
+	driver.find_element_by_name('Email').send_keys(MAIL)
+	driver.save_screenshot("static/img/2.png")
+	if 'identifier-captcha-input' in driver.page_source:
+		logging.info('Captcha appeared')
+		return False
+	logging.info('Sent mail key')
+	return True
+
+
+def send_captcha(text):
+	driver.find_element_by_id('identifier-captcha-input').send_keys(text)
+
+	driver.save_screenshot("static/img/3.png")
+	
+	driver.find_element_by_id('next').click()
+	logging.info('Sent captcha and mail key')
+
+
+def send_password():
+	WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.NAME, 'Passwd')))
+	driver.find_element_by_name('Passwd').send_keys(PASSWORD)
+
+	driver.save_screenshot("static/img/3.png")
+
+	driver.find_element_by_id('submit').click()
+	logging.info('Sent password key')
+
+
 def google_login():
 	''' Google authorization '''
 
@@ -55,36 +84,34 @@ def google_login():
 	driver.get('https://accounts.google.com/signin/v2/identifier?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&&o_ref=https%3A%2F%2Fmeet.google.com%2Fjhg-pbdx-brz%3Fauthuser%3D1&_ga=2.238318663.697307376.1602849973-1269364394.1602849973&flowName=GlifWebSignIn&flowEntry=ServiceLogin')
 	logging.info('Get to google authorization page')
 	driver.save_screenshot("static/img/1.png")
-	try:
-		# Find login field
-		driver.find_element_by_name('Email').send_keys(MAIL)
-		
-		driver.save_screenshot("static/img/2.png")
-		
-		driver.find_element_by_id('next').click()
-		logging.info('Sent mail key')
-	except:
-		logging.warning('Could not send mail key. Starting authorization again')
+	# try:
+	# 	# Find login field
+	# 	driver.find_element_by_name('Email').send_keys(MAIL)
+	# 	driver.save_screenshot("static/img/2.png")
+	# 	driver.find_element_by_id('next').click()
+	# 	logging.info('Sent mail key')
+	# except:
+	# 	logging.warning('Could not send mail key. Starting authorization again')
 		# google_login()
 
-	try:
-		# Wait form to be loaded
-		WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.CLASS_NAME, 'ANuIbb.IdAqtf')))
-		# Find password find_element_by_id
-		driver.find_element_by_name('Passwd').send_keys(PASSWORD)
+	# try:
+	# 	# Wait form to be loaded
+	# 	WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.CLASS_NAME, 'ANuIbb.IdAqtf')))
+	# 	# Find password find_element_by_id
+	# 	driver.find_element_by_name('Passwd').send_keys(PASSWORD)
 
-		driver.save_screenshot("static/img/3.png")
+	# 	driver.save_screenshot("static/img/3.png")
 		
-		driver.find_element_by_id('submit').click()
-		logging.info('Sent password key')
-	except:
-		logging.warning('Could not send password key. Starting authorization again')
-		# google_login()
+	# 	driver.find_element_by_id('submit').click()
+	# 	logging.info('Sent password key')
+	# except:
+	# 	logging.warning('Could not send password key. Starting authorization again')
+	# 	# google_login()
 
-	logging.info("Google authorization success!")
-	driver.save_screenshot("static/img/4.png")
-	print(driver.page_source)
-	logging.info(driver.page_source)
+	# logging.info("Google authorization success!")
+	# driver.save_screenshot("static/img/4.png")
+	# print(driver.page_source)
+	# logging.info(driver.page_source)
 
 	# Start active timers after success authorization
 	# start_active()

@@ -101,6 +101,12 @@ def googlelogin():
 	if request.method == 'POST':
 		if 'login' in request.form:
 			core.google_login()
+			if core.send_mail():
+				core.send_password()
+		if 'captcha' in request.form:
+			captcha_text = request.form['captcha']
+			core.send_captcha(captcha_text)
+			core.send_password()
 
 	return render_template("login.html")
 
