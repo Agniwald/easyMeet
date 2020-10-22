@@ -67,16 +67,18 @@ def send_captcha(text):
 
 
 def send_password():
-	driver.save_screenshot("static/img/4.png")
-	print(driver.page_source)
-	logging.info(driver.page_source)
+	
+	# print(driver.page_source)
+	# logging.info(driver.page_source)
 
 	WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, 'Passwd')))
-	driver.save_screenshot("static/img/5.png")
+	driver.save_screenshot("static/img/4.png")
 	driver.find_element_by_name('Passwd').send_keys(PASSWORD)
 
 	driver.find_element_by_id('submit').click()
 	logging.info('Sent password key')
+	time.sleep(2)
+	driver.save_screenshot("static/img/5.png")
 
 
 def google_login():
