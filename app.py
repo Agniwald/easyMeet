@@ -111,7 +111,8 @@ def googlelogin():
 			core.send_password()
 
 		if 'phone_code' in request.form:
-			phone_code = request.form['send_phone_code']
+			print('herewe')
+			phone_code = request.form['phone_code']
 			core.send_phone_code(phone_code)
 
 		if core.check_login():

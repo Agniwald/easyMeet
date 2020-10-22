@@ -107,11 +107,8 @@ def check_login():
 
 	if 'mSMaIe' in driver.page_source:
 		driver.save_screenshot("static/img/6.png")
-
 		driver.find_elements_by_class_name('mSMaIe')[1].click()
-		driver.find_element_by_id('idvPreregisteredPhonePin').send_keys()
 		driver.save_screenshot('static/img/11.png')
-
 		return False
 
 	driver.save_screenshot("static/img/8.png")
