@@ -74,10 +74,8 @@ def send_captcha(text):
 
 def send_password():
 	''' Send password key in google login form '''
-
-	WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, 'Passwd')))
-
 	driver.save_screenshot("static/img/4.png")
+	WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, 'Passwd')))
 
 	driver.find_element_by_name('Passwd').send_keys(PASSWORD)
 	driver.find_element_by_id('submit').click()
