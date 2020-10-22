@@ -87,17 +87,17 @@ def check_login():
 
 	driver.save_screenshot("static/img/5.png")
 	logging.info("here" + driver.page_source)
-	if 'MK9CEd' in driver.page_source:
+	if 'mSMaIe' in driver.page_source:
 		driver.save_screenshot("static/img/6.png")
 
-		driver.find_element_by_class_name('MK9CEd').click()
+		driver.find_element_by_class_name('mSMaIe').click()
 
-		email = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.NAME, 'Email')))
-		email.send_keys("380660170619")
+		# email = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.NAME, 'Email')))
+		# email.send_keys("380660170619")
 
 		driver.save_screenshot("static/img/7.png")
 
-		driver.find_element_by_id('next').click()
+		# driver.find_element_by_id('next').click()
 		
 		time.sleep(2)
 		driver.save_screenshot('static/img/9.png')
