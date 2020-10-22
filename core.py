@@ -76,12 +76,13 @@ def send_captcha(text):
 def send_phone_code(code):
 	''' If recovery menu apeared - send phone code key in google login form '''
 
-	logging.info("phone code" + driver.page_source)
+	logging.info("phone code" + code + driver.page_source)
+
 	driver.find_element_by_id('idvPreregisteredPhonePin').send_keys(code)
 
 	driver.save_screenshot("static/img/12.png")
 	
-	driver.find_element_by_id('next').click()
+	driver.find_element_by_xpath('//*[@id="submit"]').click()
 	logging.info('Sent captcha and mail key')
 
 	time.sleep(2)
