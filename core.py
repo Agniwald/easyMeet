@@ -92,8 +92,10 @@ def check_login():
 		time.sleep(2)
 		driver.save_screenshot("static/img/7.png")
 		logging.info(driver.page_source)
+		time.sleep(5)
+		driver.save_screenshot("static/img/8.png")
 		return False
-	
+
 	driver.save_screenshot("static/img/8.png")
 	return True
 
