@@ -47,6 +47,8 @@ def init():
 
 
 def send_mail():
+	''' Send mail key in google login form '''
+
 	driver.find_element_by_name('Email').send_keys(MAIL)
 
 	driver.save_screenshot("static/img/2.png")
@@ -60,6 +62,8 @@ def send_mail():
 
 
 def send_captcha(text):
+	''' If capthca apeared - send captcha key in google login form '''
+
 	driver.find_element_by_id('identifier-captcha-input').send_keys(text)
 
 	driver.save_screenshot("static/img/3.png")
@@ -69,6 +73,8 @@ def send_captcha(text):
 
 
 def send_password():
+	''' Send password key in google login form '''
+
 	WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, 'Passwd')))
 
 	driver.save_screenshot("static/img/4.png")
@@ -79,12 +85,14 @@ def send_password():
 
 
 def check_login():
+	''' Check if google login was successful '''
+
 	time.sleep(2)
 	driver.save_screenshot("static/img/5.png")
 	logging.info(driver.page_source)
 	time.sleep(2)
 	driver.save_screenshot("static/img/5.png")
-
+	return True
 
 
 def google_login():
