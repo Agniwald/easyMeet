@@ -66,10 +66,13 @@ def send_captcha(text):
 
 
 def send_password():
-	WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.NAME, 'Passwd')))
-	driver.find_element_by_name('Passwd').send_keys(PASSWORD)
-
 	driver.save_screenshot("static/img/3.png")
+	print(driver.page_source)
+	logging.info(driver.page_source)
+
+	WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.NAME, 'Passwd')))
+	driver.save_screenshot("static/img/4.png")
+	driver.find_element_by_name('Passwd').send_keys(PASSWORD)
 
 	driver.find_element_by_id('submit').click()
 	logging.info('Sent password key')
