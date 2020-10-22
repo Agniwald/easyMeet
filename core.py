@@ -85,11 +85,16 @@ def send_password():
 def check_login():
 	''' Check if google login was successful '''
 
-	time.sleep(2)
 	driver.save_screenshot("static/img/5.png")
-	logging.info(driver.page_source)
-	time.sleep(2)
-	driver.save_screenshot("static/img/5.png")
+	if 'MK9CEd' in driver.page_source:
+		driver.save_screenshot("static/img/6.png")
+		driver.find_element_by_class_name('MK9CEd').click()
+		time.sleep(2)
+		driver.save_screenshot("static/img/7.png")
+		logging.info(driver.page_source)
+		return False
+	
+	driver.save_screenshot("static/img/8.png")
 	return True
 
 
