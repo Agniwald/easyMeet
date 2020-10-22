@@ -90,17 +90,17 @@ def check_login():
 	if 'mSMaIe' in driver.page_source:
 		driver.save_screenshot("static/img/6.png")
 
-		driver.find_element_by_class_name('mSMaIe').click()
+		driver.find_elements_by_class_name('mSMaIe')[1].click()
 
 		# email = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.NAME, 'Email')))
 		# email.send_keys("380660170619")
 
-		driver.save_screenshot("static/img/7.png")
+		driver.save_screenshot("static/img/10.png")
 
 		# driver.find_element_by_id('next').click()
 		
 		time.sleep(2)
-		driver.save_screenshot('static/img/9.png')
+		driver.save_screenshot('static/img/11.png')
 
 		logging.info(driver.page_source)
 		return False
