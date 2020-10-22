@@ -62,18 +62,35 @@ def send_mail():
 
 
 def send_captcha(text):
-	''' If capthca apeared - send captcha key in google login form '''
+	''' If captcha apeared - send captcha key in google login form '''
 
 	driver.find_element_by_id('identifier-captcha-input').send_keys(text)
 
 	driver.save_screenshot("static/img/3.png")
 	
+	driver.find_element_by_id('submit').click()
+	logging.info('Sent phone code key')
+
+
+
+def send_phone_code(code):
+	''' If recovery menu apeared - send phone code key in google login form '''
+
+	logging.info("phone code" + driver.page_source)
+	driver.find_element_by_id('idvPreregisteredPhonePin').send_keys(code)
+
+	driver.save_screenshot("static/img/12.png")
+	
 	driver.find_element_by_id('next').click()
 	logging.info('Sent captcha and mail key')
+
+	time.sleep(2)
+	driver.save_screenshot("static/img/15.png")
 
 
 def send_password():
 	''' Send password key in google login form '''
+
 	driver.save_screenshot("static/img/4.png")
 	WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, 'Passwd')))
 
@@ -87,22 +104,14 @@ def check_login():
 
 	driver.save_screenshot("static/img/5.png")
 	logging.info("here" + driver.page_source)
+
 	if 'mSMaIe' in driver.page_source:
 		driver.save_screenshot("static/img/6.png")
 
 		driver.find_elements_by_class_name('mSMaIe')[1].click()
-
-		# email = WebDriverWait(driver, 20).until(EC.visibility_of_element_located((By.NAME, 'Email')))
-		# email.send_keys("380660170619")
-
-		driver.save_screenshot("static/img/10.png")
-
-		# driver.find_element_by_id('next').click()
-		
-		time.sleep(2)
+		driver.find_element_by_id('idvPreregisteredPhonePin').send_keys()
 		driver.save_screenshot('static/img/11.png')
 
-		logging.info(driver.page_source)
 		return False
 
 	driver.save_screenshot("static/img/8.png")

