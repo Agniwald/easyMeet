@@ -52,6 +52,7 @@ def send_mail():
 	if 'identifier-captcha-input' in driver.page_source:
 		logging.info('Captcha appeared')
 		return False
+	driver.find_element_by_id('next').click()
 	logging.info('Sent mail key')
 	return True
 
