@@ -107,6 +107,7 @@ def googlelogin():
 			captcha_text = request.form['captcha']
 			core.send_captcha(captcha_text)
 			core.send_password()
+			core.check_login()
 
 	return render_template("login.html")
 
