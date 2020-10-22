@@ -92,7 +92,7 @@ def log():
 
 @app.route('/test')
 def test():
-	images =[os.path.join(r, n)  for r, _, f in os.walk("static/img/") for n in f]
+	images = sorted([os.path.join(r, n)  for r, _, f in os.walk("static/img/") for n in f])
 	return render_template("test.html", images=images)
 
 
