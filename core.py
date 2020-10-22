@@ -30,7 +30,6 @@ def init():
 	chrome_options.add_argument("--headless")
 	chrome_options.add_argument("--disable-dev-shm-usage")
 	chrome_options.add_argument("--no-sandbox")
-	# 	chrome_options.add_argument('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36')
 	# Block micro, audio, geolocation and notifications
 	chrome_options.add_experimental_option("prefs", { \
 		"profile.default_content_setting_values.media_stream_mic": 2, 
@@ -55,11 +54,13 @@ def google_login():
 	# Get Google auth page
 	driver.get('https://accounts.google.com/signin/v2/identifier?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&&o_ref=https%3A%2F%2Fmeet.google.com%2Fjhg-pbdx-brz%3Fauthuser%3D1&_ga=2.238318663.697307376.1602849973-1269364394.1602849973&flowName=GlifWebSignIn&flowEntry=ServiceLogin')
 	logging.info('Get to google authorization page')
-	driver.save_screenshot("static/1.png")
+	driver.save_screenshot("static/img/1.png")
 	try:
 		# Find login field
 		driver.find_element_by_name('Email').send_keys(MAIL)
-		driver.save_screenshot("static/2.png")
+		
+		driver.save_screenshot("static/img/2.png")
+		
 		driver.find_element_by_id('next').click()
 		logging.info('Sent mail key')
 	except:
@@ -71,7 +72,9 @@ def google_login():
 		WebDriverWait(driver, 20).until(EC.invisibility_of_element((By.CLASS_NAME, 'ANuIbb.IdAqtf')))
 		# Find password find_element_by_id
 		driver.find_element_by_name('Passwd').send_keys(PASSWORD)
-		driver.save_screenshot("static/3.png")
+
+		driver.save_screenshot("static/img/3.png")
+		
 		driver.find_element_by_id('submit').click()
 		logging.info('Sent password key')
 	except:
@@ -79,7 +82,7 @@ def google_login():
 		google_login()
 
 	logging.info("Google authorization success!")
-	driver.save_screenshot("static/4.png")
+	driver.save_screenshot("static/img/4.png")
 
 
 def start_active():
@@ -110,16 +113,17 @@ def join_meet(meet):
 		driver.get(needed_subject.url)
 		# Wait join button to appear 
 
-		driver.save_screenshot("static/5.png")
+		driver.save_screenshot("static/img/5.png")
+
 		join_btn = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div.uArJ5e:nth-child(1)')))
-		driver.save_screenshot("static/6.png")
+		driver.save_screenshot("static/img/6.png")
 		time.sleep(7)
-		driver.save_screenshot("static/7.png")
+		driver.save_screenshot("static/img/7.png")
 		join_btn.click()
-		driver.save_screenshot("static/8.png")
+		driver.save_screenshot("static/img/8.png")
 		logging.info(f'Successfully joined {meet}')
 		time.sleep(5)
-		driver.save_screenshot("static/9.png")
+		driver.save_screenshot("static/img/9.png")
 	except:
 		logging.warning('Joining meet failed. Trying again.')
 		join_meet(meet)

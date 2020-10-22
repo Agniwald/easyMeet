@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from time import sleep
+import os
 from settings import DB_URI, APP_SECRET_KEY
 
 app = Flask(__name__)
@@ -88,7 +89,7 @@ def log():
 
 @app.route('/test')
 def test():
-	images = ['static/1.png', 'static/2.png', 'static/3.png', 'static/4.png', 'static/5.png', 'static/6.png', 'static/7.png', 'static/8.png', 'static/9.png']
+	images =[os.path.join(r, n)  for r, _, f in os.walk("static/img/") for n in f]
 	return render_template("test.html", images=images)
 
 

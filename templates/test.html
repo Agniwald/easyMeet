@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Test</title>
-</head>
-<body>
-	{% for image in images %}
-    	<img src="{{ image }}">
-    {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+
+{% for image in images %}
+	<img src="{{ image }}">
+{% endfor %}
+
+{% endblock %}

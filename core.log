@@ -1,9 +1,3 @@
-21-10-2020 19:01:45 INFO - Starting webdriver initialization
-21-10-2020 19:01:46 INFO - Webdriver initializated
-21-10-2020 19:01:46 INFO - Starting Google authorization
-21-10-2020 19:01:49 INFO - Get to google authorization page
-21-10-2020 19:01:49 WARNING - Could not send mail key. Starting authorization again
-21-10-2020 19:01:49 INFO - Starting Google authorization
-21-10-2020 19:01:50 INFO - Get to google authorization page
-21-10-2020 19:01:50 WARNING - Could not send mail key. Starting authorization again
-21-10-2020 19:01:50 INFO - Starting Google authorization
+22-10-2020 11:02:07 INFO - Starting webdriver initialization
+22-10-2020 11:02:11 INFO - Webdriver initializated
+22-10-2020 11:02:11 INFO - Starting Google authorization
