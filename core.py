@@ -53,6 +53,7 @@ def send_mail():
 
 	driver.save_screenshot("static/img/2.png")
 
+	# If capthcha appeared - return False
 	if 'identifier-captcha-input' in driver.page_source:
 		logging.info('Captcha appeared')
 		return False
@@ -62,7 +63,7 @@ def send_mail():
 
 
 def send_captcha(text):
-	''' If captcha apeared - send captcha key in google login form '''
+	''' If captcha appeared - send captcha key in google login form '''
 
 	driver.find_element_by_id('identifier-captcha-input').send_keys(text)
 
