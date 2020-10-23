@@ -137,15 +137,15 @@ def google_login():
 
 
 def google_login_on_start():
-	core.google_login()
+	google_login()
 
-	if core.send_mail():
+	if send_mail():
 		logging.info('[ON START]')
-		core.send_password()
+		send_password()
 		logging.info('[ON START]')
 
-		if core.check_login():
-			core.start_active()
+		if check_login():
+			start_active()
 		else:
 			logging.warning('[ON START] LOGIN FAILED!')
 	else:
