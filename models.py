@@ -40,11 +40,11 @@ class ActiveTimer(db.Model):
 	def status(self):
 		now = datetime.now()
 		if self.start > now:
-			return 'Ожидает'
+			return 'Waiting'
 		elif self.start < now and self.end > now:
-			return 'Выполняется'
+			return 'In progress'
 		else:
-			return 'Выполнен'
+			return 'Completed'
 
 	def __repr__(self):
 		return f"{self.name} - {self.start} to {self.end}"
