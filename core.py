@@ -105,7 +105,6 @@ def check_login():
 	''' Check if google login was successful '''
 
 	driver.save_screenshot("static/img/5.png")
-	logging.info("here" + driver.page_source)
 
 	if 'mSMaIe' in driver.page_source:
 		driver.save_screenshot("static/img/6.png")
@@ -137,6 +136,8 @@ def google_login():
 
 
 def google_login_on_start():
+	''' Start google login proccess '''
+
 	google_login()
 
 	if send_mail():

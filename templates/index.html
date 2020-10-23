@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}  
-<h4>Предметы</h4>
+<h4>Subjects</h4>
 
 <form method="POST" action="/add_subject"  enctype="multipart/form-data">
     <input class="form-control" type="text" name="name" placeholder="Название предмета"/ required>
     <input class="form-control" type="text" name="url" placeholder="Ссылка на Google Meet"/ required>
     <br>
-    <button class="btn" type="submit"/>Добавить</button>
+    <button class="btn" type="submit"/>Add</button>
 </form>
 <br>
 
@@ -14,9 +14,9 @@
     <thead>
         <tr>
             <th>№</th>
-            <th>Название предмета</th>
-            <th>Ссылка на Google Meet</th>
-            <th>Удалить</th>
+            <th>Name of subject</th>
+            <th>Link to Google Meet</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -27,7 +27,7 @@
         <td>{{ subject.url }}</td>
         <td>
             <form method="POST" action="/delete_subject">
-                <button class="btn" type="submit" name="id" value={{ subject.id }}>Удалить</button>
+                <button class="btn" type="submit" name="id" value={{ subject.id }}>Delete</button>
             </form>
         </td>
     </tr>
@@ -35,10 +35,10 @@
     </tbody>
 </table>
 <br>
-<h4>Активные таймеры</h4>
+<h4>Active timers</h4>
 
 <form method="POST" action="/add_timer"  enctype="multipart/form-data">
-    Предмет
+    Subject
     <select id="subject" name="subject" required>
         {% for subject in subjects %}
             {% if loop.index == 1 %}
@@ -49,10 +49,10 @@
         {% endfor %}
     </select>
     <br>
-    <p>Зайти в:</p>
+    <p>Entet at:</p>
     <input class="form-control" type="date" name="start_date" placeholder=""/ required>
     <input class="form-control" type="time" name="start_time" placeholder=""/ required>
-    <p>Уйти в:</p>
+    <p>Leave at:</p>
     <input class="form-control" type="date" name="end_date" placeholder=""/ required>
     <input class="form-control" type="time" name="end_time" placeholder=""/ required>
     <br>
@@ -67,7 +67,7 @@
         {% endif %}
     {% endwith %}
 
-    <button class="btn" type="submit"/>Добавить</button>
+    <button class="btn" type="submit"/>Add</button>
 </form>
 <br>
 
@@ -75,11 +75,11 @@
     <thead>
         <tr>
             <th>№</th>
-            <th>Предмет</th>
-            <th>Зайти</th>
-            <th>Уйти</th>
-            <th>Статус</th>
-            <th>Удалить</th>
+            <th>Subject</th>
+            <th>Enter at</th>
+            <th>Leave at</th>
+            <th>Status</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -92,7 +92,7 @@
         <td>{{ timer.status }}</td>
         <td>
             <form method="POST" action="/delete_timer">
-                <button class="btn" type="submit" name="id" value={{ timer.id }}>Удалить</button>
+                <button class="btn" type="submit" name="id" value={{ timer.id }}>Delete</button>
             </form>
         </td>
     </tr>

@@ -58,10 +58,10 @@ def add_timer():
 	end_datetime = datetime.strptime(f"{end_date} {end_time}", '%Y-%m-%d %H:%M')
 
 	if start_datetime > end_datetime:
-		flash("Начало времени Meet не может быть позже его окончания!")
+		flash("Start time of Meet can not be later than end time!")
 		return redirect(url_for('index'))
 	elif start_datetime < datetime.now() or end_datetime < datetime.now():
-		flash("Время Meet не может быть раньше текущего времени!")
+		flash("Time of Meet can not be earlier than current time!")
 		return redirect(url_for('index'))
 
 	timer_obj = ActiveTimer(name, start_datetime, end_datetime)
