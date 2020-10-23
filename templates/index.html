@@ -3,8 +3,8 @@
 <h4>Subjects</h4>
 
 <form method="POST" action="/add_subject"  enctype="multipart/form-data">
-    <input class="form-control" type="text" name="name" placeholder="Название предмета"/ required>
-    <input class="form-control" type="text" name="url" placeholder="Ссылка на Google Meet"/ required>
+    <input class="form-control" type="text" name="name" placeholder="Name of subject"/ required>
+    <input class="form-control" type="text" name="url" placeholder="Link to Google Meet"/ required>
     <br>
     <button class="btn" type="submit"/>Add</button>
 </form>
@@ -49,7 +49,7 @@
         {% endfor %}
     </select>
     <br>
-    <p>Entet at:</p>
+    <p>Enter at:</p>
     <input class="form-control" type="date" name="start_date" placeholder=""/ required>
     <input class="form-control" type="time" name="start_time" placeholder=""/ required>
     <p>Leave at:</p>
