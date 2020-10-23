@@ -117,6 +117,14 @@ def check_login():
 	return True
 
 
+def screenshot_google_account():
+	''' Screenshot of https://myaccount.google.com/ '''
+
+	driver.get("https://myaccount.google.com/")
+	driver.save_screenshot("static/img/20.png")
+	logging.info("Took screenshot of https://myaccount.google.com/")
+
+
 def google_login():
 	''' Google authorization '''
 
@@ -126,6 +134,22 @@ def google_login():
 	driver.get('https://accounts.google.com/signin/v2/identifier?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&&o_ref=https%3A%2F%2Fmeet.google.com%2Fjhg-pbdx-brz%3Fauthuser%3D1&_ga=2.238318663.697307376.1602849973-1269364394.1602849973&flowName=GlifWebSignIn&flowEntry=ServiceLogin')
 	logging.info('Get to google authorization page')
 	driver.save_screenshot("static/img/1.png")
+
+
+def google_login_on_start():
+	core.google_login()
+
+	if core.send_mail():
+		logging.info('[ON START]')
+		core.send_password()
+		logging.info('[ON START]')
+
+		if core.check_login():
+			core.start_active()
+		else:
+			logging.warning('[ON START] LOGIN FAILED!')
+	else:
+		logging.warning('[ON START] CAPTCHA APPEARED!')
 
 
 def start_active():

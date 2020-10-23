@@ -14,8 +14,9 @@ db = SQLAlchemy(app)
 from models import *
 import core
 
-# Start core
+# Start core and try login
 core.init()
+core.google_login_on_start()
 
 
 @app.route("/")
@@ -99,6 +100,9 @@ def test():
 @app.route('/googlelogin', methods=['GET', 'POST'])
 def googlelogin():
 	if request.method == 'POST':
+		if 'check' in request.form:
+			core.screenshot_google_account()
+
 		if 'login' in request.form:
 			core.google_login()
 
@@ -111,7 +115,6 @@ def googlelogin():
 			core.send_password()
 
 		if 'phone_code' in request.form:
-			print('herewe')
 			phone_code = request.form['phone_code']
 			core.send_phone_code(phone_code)
 
