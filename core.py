@@ -234,6 +234,8 @@ def add_meet(meet):
 def cancel_meet(thread_id):
 	''' Cancel Timer object by name '''
 
+	driver.get("https://google.com") # Leaving before canceling the thread
+
 	for t in threading.enumerate():
 		if t.name == thread_id:
 			t.cancel()
