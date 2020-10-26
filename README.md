@@ -68,22 +68,4 @@ If you want to deploy your instance of app you need it to set it up properly.
 The main problem on deployment is that after deployment it will be hosted on different IP and when bot tries to sign in Google will ask to login again with `one time password`.
 But application's core provide functionality to solve this problem. Check `Test` tab to see what excatly Google wants from you (phone code/captcha/number confiramtion) and set it in `Google Login` tab.
 
-For example, here's deployment process on Heroku:
-1. Create app in your Heroku account.
-2. Add PostgresSQL add-on and copy URI in add-on settings.
-3. Set these env variables in app settings:
-```
-MAIL=(your Google account email)
-PASSWORD=(your Google account password)
-DB_URI=(EXCATLY THAT URI YOU COPIED BEFORE)
-APP_SECRET_KEY=(create your Flask secret key)
-GOOGLE_CHROME_BIN=/app/.apt/usr/bin/google-chrome
-CHROMEDRIVER_PATH=/app/.chromedriver/bin/chromedriver
-TZ=(whatever your timezone is)
-```
-4. Add these buildpacks:
-- heroku/python
-- https://github.com/heroku/heroku-buildpack-google-chrome
-- https://github.com/heroku/heroku-buildpack-chromedriver
-5. Deploy project with Heroku CLI tool or with forked github repo.
-6. Start `dyno` in `Resources` tab.
+For example, here's a guide on [how to set up a project with Nginx + Gunicorn](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04#create-a-gunicorn-systemd-service-file) on AWS or similar services.
