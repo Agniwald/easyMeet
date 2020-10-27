@@ -36,11 +36,11 @@ Now when you visit the page you will see 4 tabs in navbar
 - Test
 
 #### Home
-On home page you can add your subject table for easy usage.
+On the home page you can add your subject table for easy usage.
 Also, you can add timers on your meets. Set start time and end time - add whatever number of meets you want!
 
 #### Google Login
-On Google Login page you can start authorization if it failed on boot (check logs).
+On the Google Login page you can start authorization if it failed on boot (check logs).
 Also, application core provide functionality to "recover" your account by phone number or if captcha appeared!
 To check success of authorization - click "Check" and go to `Test` tab to see screenshot of myaccount.google.com
 
@@ -48,7 +48,7 @@ To check success of authorization - click "Check" and go to `Test` tab to see sc
 Pretty self-explanatory.
 
 #### Test
-In this tab you will see all operations of application core. **Check this tab to see Google login recover code!**
+On this tab you will see all operations of application core. **Check this tab to see Google login recover code!**
 
 
 ### Requirements
