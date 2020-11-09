@@ -5,7 +5,7 @@
 
 ### How it works
 Project is made using `Selenium` (which is a web testing library for Robot Framework that utilizes the Selenium tool internally) and `Flask` (Python backend library). We open a chromium app on server where we can add, create, open tabs and set browser operations and everything.
-Using `Flask` as interface to create our schedule subjects and timers (meets) make it easy to use and understand.
+Using `Flask` as an interface to create our schedule subjects and timers (meets) make it easy to use and understand.
 
 ### Installation guide for local usage and development
 1. Open terminal on your PC
@@ -66,6 +66,6 @@ If you want to see bot automatically opening the page and filling login values a
 
 If you want to deploy your instance of app you need it to set it up properly.
 The main problem on deployment is that after deployment it will be hosted on different IP and when bot tries to sign in Google will ask to login again with `one time password`.
-But application's core provide functionality to solve this problem. Check `Test` tab to see what excatly Google wants from you (phone code/captcha/number confiramtion) and set it in `Google Login` tab.
+But application's core provide functionality to solve this problem. Check `Test` tab to see what excatly Google wants from you (phone code/captcha/number confirmation) and set it in `Google Login` tab.
 
 For example, here's a guide on [how to set up a project with Nginx + Gunicorn](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04#create-a-gunicorn-systemd-service-file) on AWS or similar services.
