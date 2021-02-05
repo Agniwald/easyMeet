@@ -4,7 +4,7 @@
 #### Bot for scheduling and entering Google Meet sessions automatically.
 
 ### How it works
-Project is made using `Selenium` (which is a web testing library for Robot Framework that utilizes the Selenium tool internally) and `Flask` (Python backend library). We open a chromium app on server where we can add, create, open tabs and set browser operations and everything.
+Project is made using `Selenium` and `Flask`. We open a chromium app on server where we can add, create, open tabs and set browser operations and everything.
 Using `Flask` as an interface to create our schedule subjects and timers (meets) make it easy to use and understand.
 
 ### Installation guide for local usage and development
