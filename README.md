@@ -3,6 +3,8 @@
 
 #### Bot for scheduling and entering Google Meet sessions automatically.
 
+![example](https://imgur.com/KvesLyR.png)
+
 ### How it works
 Project is made using `Selenium` and `Flask`. We open a chromium app on server where we can add, create, open tabs and set browser operations and everything.
 Using `Flask` as an interface to create our schedule subjects and timers (meets) make it easy to use and understand.
