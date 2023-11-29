@@ -11,7 +11,7 @@ Using `Flask` as an interface to create our schedule subjects and timers (meets)
 
 ### Installation guide for local usage and development
 1. Open terminal on your PC
-2. Clone the repo `https://github.com/DSH01/easyMeet.git`
+2. Clone the repo `https://github.com/Agniwald/easyMeet.git`
 3. Go inside the project directory
 4. Create file `.env` file and add these lines:
 ```
